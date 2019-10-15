@@ -4,7 +4,7 @@ window.onload = function() {
   var board = document.getElementById("board");
   var squares = board.getElementsByTagName("div");
   var status = document.getElementById("status");
-  var button = document.getElementsByClassName("btn");
+  var btn = document.getElementsByTagName("button");
   let playerTurn = "X";
   const winningCombos = [
     [0, 1, 2],
@@ -47,6 +47,20 @@ window.onload = function() {
       }
     });
     return winner;
+  }
+
+  function resetGame() {
+    btn[0].addEventListener("click", function() {
+      for (var i = 0; i < squares.length; i += 1) {
+        squares[i].classList.remove("X");
+        squares[i].classList.remove("O");
+        squares[i].innerHTML = "";
+        status.classList.remove("you-won");
+        status.innerHTML =
+          "Move your mouse over a square and click to play an X or an O.";
+        playerTurn = "X";
+      }
+    });
   }
 
   /*function checkWinner(squares, playerTurn) {
@@ -123,34 +137,25 @@ window.onload = function() {
     }
   }
 
-  function resetGame() {
-    button.addEventListener("click", function() {
-      for (var i = 0; i < squares.length; i += 1) {
-        squares[i].removeClass(playerTurn);
-        squares[i].innerHTML = "";
-        status.innerHTML =
-          "Move your mouse over a square and click to play an X or an O.";
-        playerTurn = "X";
-      }
-    });
-  }
-
   function playGame() {
     for (var i = 0; i < squares.length; i += 1) {
       squares[i].addEventListener("click", function() {
         if (this.innerHTML.length < 1) {
           this.classList.add(playerTurn);
           this.innerHTML = playerTurn;
+          console.log(playerTurn);
+          switchTurn();
           if (checkWinner()) {
             status.innerHTML =
               "Congratulations! " + playerTurn + " is the Winner!";
             status.classList.add("you-won");
+            playerTurn = "";
           }
-          switchTurn();
         }
       });
     }
   }
 
   playGame();
+  resetGame();
 };
