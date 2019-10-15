@@ -33,7 +33,7 @@ window.onload = function() {
   const positions = this.positions;
 
   function checkWinner() {
-    var winner = false;
+    var winn = false;
     winningCombos.forEach(winningCombo => {
       const pos0InnerText = positions[winningCombo[0]].innerHTML;
       const pos1InnerText = positions[winningCombo[1]].innerHTML;
@@ -44,10 +44,10 @@ window.onload = function() {
         pos1InnerText === pos2InnerText;
 
       if (isWinningCombo) {
-        winner = true;
+        winn = true;
       }
     });
-    return winner;
+    return winn;
   }
 
   function resetGame() {
@@ -64,72 +64,6 @@ window.onload = function() {
       }
     });
   }
-
-  /*function checkWinner(squares, playerTurn) {
-    if (
-      squares[0].innerHTML === playerTurn &&
-      squares[1].innerHTML === playerTurn &&
-      squares[2].innerHTML === playerTurn
-    ) {
-      return true;
-    }
-
-    if (
-      squares[3].innerHTML === playerTurn &&
-      squares[4].innerHTML === playerTurn &&
-      squares[5].innerHTML === playerTurn
-    ) {
-      return true;
-    }
-
-    if (
-      squares[6].innerHTML === playerTurn &&
-      squares[7].innerHTML === playerTurn &&
-      squares[8].innerHTML === playerTurn
-    ) {
-      return true;
-    }
-
-    if (
-      squares[0].innerHTML === playerTurn &&
-      squares[3].innerHTML === playerTurn &&
-      squares[6].innerHTML === playerTurn
-    ) {
-      return true;
-    }
-
-    if (
-      squares[1].innerHTML === playerTurn &&
-      squares[4].innerHTML === playerTurn &&
-      squares[7].innerHTML === playerTurn
-    ) {
-      return true;
-    }
-
-    if (
-      squares[2].innerHTML === playerTurn &&
-      squares[5].innerHTML === playerTurn &&
-      squares[8].innerHTML === playerTurn
-    ) {
-      return true;
-    }
-
-    if (
-      squares[0].innerHTML === playerTurn &&
-      squares[4].innerHTML === playerTurn &&
-      squares[8].innerHTML === playerTurn
-    ) {
-      return true;
-    }
-
-    if (
-      squares[2].innerHTML === playerTurn &&
-      squares[4].innerHTML === playerTurn &&
-      squares[6].innerHTML === playerTurn
-    ) {
-      return true;
-    }
-  }*/
 
   function switchTurn() {
     if (playerTurn === "X") {
@@ -159,7 +93,6 @@ window.onload = function() {
       });
     }
   }
-
-  playGame();
   resetGame();
+  playGame();
 };
