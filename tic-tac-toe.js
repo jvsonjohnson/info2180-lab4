@@ -16,6 +16,7 @@ window.onload = function() {
     [0, 4, 8],
     [2, 4, 6]
   ];
+  var winner = null;
 
   for (var i = 0; i < squares.length; i += 1) {
     squares[i].classList.add("square");
@@ -59,6 +60,7 @@ window.onload = function() {
         status.innerHTML =
           "Move your mouse over a square and click to play an X or an O.";
         playerTurn = "X";
+        winner = null;
       }
     });
   }
@@ -138,7 +140,6 @@ window.onload = function() {
   }
 
   function playGame() {
-    var winner = null;
     for (var i = 0; i < squares.length; i += 1) {
       squares[i].addEventListener("click", function() {
         if (winner === null) {
