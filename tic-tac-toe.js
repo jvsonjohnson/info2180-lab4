@@ -138,18 +138,21 @@ window.onload = function() {
   }
 
   function playGame() {
+    var winner = null;
     for (var i = 0; i < squares.length; i += 1) {
       squares[i].addEventListener("click", function() {
-        if (this.innerHTML.length < 1) {
-          this.classList.add(playerTurn);
-          this.innerHTML = playerTurn;
-          console.log(playerTurn);
-          switchTurn();
-          if (checkWinner()) {
-            status.innerHTML =
-              "Congratulations! " + playerTurn + " is the Winner!";
-            status.classList.add("you-won");
-            playerTurn = "";
+        if (winner === null) {
+          if (this.innerHTML.length < 1) {
+            this.classList.add(playerTurn);
+            this.innerHTML = playerTurn;
+
+            if (checkWinner()) {
+              status.innerHTML =
+                "Congratulations! " + playerTurn + " is the Winner!";
+              status.classList.add("you-won");
+              winner = playerTurn;
+            }
+            switchTurn();
           }
         }
       });
